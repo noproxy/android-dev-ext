@@ -23,13 +23,17 @@ async function loadAndroidSystemLibrary(extensionPath, additional_libs) {
         if (Array.isArray(additional_libs) && additional_libs.length) {
             await loadJavaLibraryCacheFile(path.join(cache_folder, 'androidx-20200701.zip'), additional_libs, typemap);
         }
-        trace(`loaded ${typemap.size} types into android library`);
+        trace(`loaded ${typemap.size} types into android library`); 
         library = typemap;
     } finally {
         timeEnd('android-library-load');
         analytics.timeEnd('android-library-load', 'ms', { libs: additional_libs, typecount: library ? library.size : 0 });
     }
     return library;
+}
+
+async function loadGradleDpendenciesLibary() {
+    get_gradle_dependencies.
 }
 
 /**
